@@ -1,0 +1,6 @@
+Django==1.4.3
+django-userena==1.1.2
+django-cms==2.3.5
+django-blog-zinnia==0.12.1
+django-reversion==1.6.5
+south==0.7.6
