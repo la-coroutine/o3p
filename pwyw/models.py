@@ -1,33 +1,38 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from shop.models import Product
+
 class SplitTemplate(models.Model):
-    label = models.CharField(max_length=255,
-                             blank=True,
-                             null=True)
+   label = models.CharField(max_length=255,
+                            blank=True,
+                            null=True)
 
-    def __unicode__(self):
-        return self.label
+   products = models.ManyToManyField(Product)
 
-class SplitItemTemplate(models.Model):
-    label = models.CharField(max_length=255,
-                             blank=True,
-                             null=True)
+   def __unicode__(self):
+       return self.label
 
-    min = models.PositiveIntegerField()
-    max = models.PositiveIntegerField()
-    default = models.PositiveIntegerField()
+# class SplitItemTemplate(models.Model):
+#     label = models.CharField(max_length=255,
+#                              blank=True,
+#                              null=True)
 
-    split_template = models.ForeignKey(SplitTemplate, related_name='items')
+#     min = models.PositiveIntegerField()
+#     max = models.PositiveIntegerField()
+#     default = models.PositiveIntegerField()
 
-    def __unicode__(self):
-        return self.label
+#     split_template = models.ForeignKey(SplitTemplate, related_name='items')
+
+#     def __unicode__(self):
+#         return self.label
+
 
 
 class UserSplit(models.Model):
     template = models.ForeignKey(SplitTemplate)
-    items = models.ManyToManyField(SplitItemTemplate,
-                                   through='UserSplitItem')
+    items = models.ManyToManyField(Product) #,
+                                   # through='UserSplitItem')
     user = models.ForeignKey(User)
 
     created_on = models.DateTimeField(auto_now_add=True)
@@ -40,10 +45,10 @@ class UserSplit(models.Model):
         return u"%s for %s" % (self.user,
                                self.template)
 
-class UserSplitItem(models.Model):
-    usersplit = models.ForeignKey(UserSplit, related_name='splititems')
-    splititem_template = models.ForeignKey(SplitItemTemplate)
-    value = models.PositiveIntegerField()
+#class UserSplitItem(models.Model):
+#    usersplit = models.ForeignKey(UserSplit, related_name='splititems')
+#    splititem_template = models.ForeignKey(SplitItemTemplate)
+#    value = models.PositiveIntegerField()
     
 
     

@@ -152,6 +152,10 @@ INSTALLED_APPS = (
     'cms.plugins.teaser',
     'cms.plugins.text',
     'cms.plugins.video',
+
+    'shop',
+    'shop.addressmodel',
+    'products',
     
     'mptt',
     'menus',
@@ -207,3 +211,6 @@ AUTH_PROFILE_MODULE = 'member.O3PProfile'
 CMS_TEMPLATES = (
     ('homepage.html', 'Homepage'),
 )
+
+SHOP_SHIPPING_BACKENDS = ('shop.shipping.backends.flat_rate.FlatRateShipping',)
+SHOP_PAYMENT_BACKENDS = ('shop.payment.backends.pay_on_delivery.PayOnDeliveryBackend',)

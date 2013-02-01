@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^members/', include('userena.urls')),
     url(r'^blog/', include('zinnia.urls')),
+    url(r'^shop/', include('shop.urls')),
     url(r'^comments/', include('django.contrib.comments.urls')),
                        
     # Uncomment the admin/doc line below to enable admin documentation:
