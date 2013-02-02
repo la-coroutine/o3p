@@ -4,3 +4,5 @@ django-cms==2.3.5
 django-blog-zinnia==0.12.1
 django-reversion==1.6.5
 south==0.7.6
+django-shop==0.1.2
+Pillow==1.7.8
